@@ -63,8 +63,8 @@ def print_hello_x_times(x): #function with x as parameter
 
 print_hello_x_times(4) #print Hello 4 times
 
-def print_hello_x_or_ten_times(x = 10): #NameError: name <variable name> is not defined
-    for num in range(x): #for loop stop at x
+def print_hello_x_or_ten_times(x = 10):  #function with x as parameter euqal to 10
+    for num in range(x): #for loop stop at 10
         print('Hello') #log statement
 
 print_hello_x_or_ten_times() #print Hello 10 times
