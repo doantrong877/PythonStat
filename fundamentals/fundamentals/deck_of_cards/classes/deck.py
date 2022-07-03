@@ -26,3 +26,7 @@ class Deck:
         for card in self.cards:
             card.card_info()
 
+    def get_deck(self):
+        
+        return self.cards
+

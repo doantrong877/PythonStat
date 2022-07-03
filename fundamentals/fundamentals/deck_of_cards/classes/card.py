@@ -8,3 +8,10 @@ class Card:
 
     def card_info(self):
         print(f"{self.string_val} of {self.suit} : {self.point_val} points")
+
+    def get_value(self):
+        return self.point_val
+
+    def get_card(self):
+        name = f"{self.string_val} of {self.suit}"
+        return name
