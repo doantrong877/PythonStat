@@ -9,7 +9,7 @@ def index():
 @app.route('/users', methods=['POST'])
 def creater_user():
     print("Got Post Info")
-    print(request.form)
+    print(request.form['name'])
     return redirect('/')
 
 if __name__ == "__main__":
