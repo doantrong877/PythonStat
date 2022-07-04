@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Document</title>
+</head>
+<body>
+<h1 style ="background-color:{{color1}}; color:{{color2}}; width: 50%">***Checkerboard***</h1>
+    {% for j in range(height) %}
+        <div class="container">
+        {% for i in range(width): %}
+            <div class="box" style ="background-color:{{color1}}"></div>
+            <div class="box" style ="background-color:{{color2}}"></div>           
+        {% endfor %}
+        </div>
+        <div class="container">
+        {% for i in range(width): %}
+            <div class="box" style ="background-color:{{color2}}"></div>
+            <div class="box" style ="background-color:{{color1}}"></div>           
+        {% endfor %}
+        </div>
+    {% endfor %}
+    
+</body>
+</html>
