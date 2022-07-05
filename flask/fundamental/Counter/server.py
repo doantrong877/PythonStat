@@ -16,10 +16,15 @@ def count_num():
     session['count'] += 1
     return render_template("index.html", counter = session['count'])
 
-@app.route('/reset')
+@app.route('/destroy_session')
 def reset_num():
     session.clear()
     return redirect('/')
+
+@app.route('/add')
+def count_num():
+    session['count'] += 2
+    return render_template("index.html", counter = session['count'])
 
 if __name__=="__main__":   
     app.run(debug=True)    

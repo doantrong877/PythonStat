@@ -39,7 +39,12 @@
         border-style: none;
         
     }
-
+    #add{
+        background-color: grey;
+        color:black;
+        border-radius: 3px;
+        border-style: none;
+    }
 </style>
 <head>
     <meta charset="UTF-8">
@@ -49,11 +54,11 @@
 </head>
 <body>
     <h1>Counter</h1>
-    
+    <form action="/add"><button id="add">Add 2 visit</button></form>
     <p>{{counter}}</p>
 <div class="btn">
     <form action="/count"><button id="click">Click</button></form>
-    <form action="/reset"><button id="reset">Reset</button></form>
+    <form action='/destroy_session'><button id="reset">Reset</button></form>
 </div>
     
     
