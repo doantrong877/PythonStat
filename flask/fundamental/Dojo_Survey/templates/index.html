@@ -48,7 +48,7 @@
 </head>
 <body>
     
-    <form action="/results" method="post">
+    <form action="/getInfo" method="post">
         <h1>Dojo Survey</h1>
         <label for="name" class="form-label">Name:</label>
         <input class="form-control" type="text" name="username" id="name">
@@ -56,25 +56,25 @@
         <label for="city" class="form-label">Dojo Location:</label>
         <select class="form-select" aria-label="Default select example" id="location" name="city">
             <option selected> -- Select a language -- </option>
-            <option value="1">Chicago</option>
-            <option value="2">Seattle</option>
-            <option value="3">Online</option>
-            <option value="4">Burbank</option>
-            <option value="5">Bellevue</option>
+            <option value="Chicago">Chicago</option>
+            <option value="Seattle">Seattle</option>
+            <option value="Online">Online</option>
+            <option value="Burbank">Burbank</option>
+            <option value="Bellevue">Bellevue</option>
           </select>
 
-          <label for="language" class="form-label">Favorite Language:</label>
-          <select class="form-select" aria-label="Default select example" id="language" >
+          <label for="lang" class="form-label">Favorite Language:</label>
+          <select class="form-select" aria-label="Default select example" id="lang" name="language" >
             <option selected> -- Select a language -- </option>
-            <option value="1">HTML</option>
-            <option value="2">CSS</option>
-            <option value="3">JavaScript</option>
-            <option value="4">Python</option>
-            <option value="5">C#</option>
+            <option value="HTML">HTML</option>
+            <option value="CSS">CSS</option>
+            <option value="JavaScript">JavaScript</option>
+            <option value="Python">Python</option>
+            <option value="C#">C#</option>
           </select>
 
-          <label for="comment" class="form-label">Comment:</label>
-          <textarea class="form-control" name="cmt" id="comment" cols="30" rows="10"></textarea>
+          <label for="cmt" class="form-label">Comment:</label>
+          <textarea class="form-control" name="comment" id="cmt" cols="30" rows="10"></textarea>
           <div class="subbtn"><button class="btn btn-warning" type="submit" >Submit</button></div>
           
 
