@@ -43,8 +43,9 @@
         #display{
             border-style: solid;
             border-width: 1px;
-            height: 200px;
-            overflow: auto;
+            height: 150px;
+            overflow: scroll;
+            overflow-x: hidden;
         }
     </style>
 </head>
@@ -88,6 +89,6 @@
         <label for="acti">Activities:</label>
         <div id="display">{{message|safe}}</div>
     </div>
-    
+    <script src="script.js"></script>
 </body>
 </html>
