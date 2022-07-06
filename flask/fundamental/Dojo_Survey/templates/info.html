@@ -4,11 +4,53 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        body{
+            padding: 5% 40% ;
+        }
+        .info{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            background-color: #2C3639;
+            padding-left: 10%;
+            padding-right: 10%;
+            height: 200px;
+            
+        }
+        .redirect{
+            background-color: #2C3639;
+            padding: 5%;
+            border-top-width: 1px ;
+            border-style: solid;
+        }
+        a{
+            text-decoration: none;
+            color: #1363DF;
+            font-weight: weight;
+        }
+        h1{
+            color:  #1363DF;
+            width: 100%;
+        }
+        p{
+            color: white;
+            width: 100%;
+        }
+    </style>
     <title>Dojo Survey</title>
 </head>
 <body>
-    
+    <div class="info">
+        <h1>{{name}}</h1>
+        <p>Dojo Location: {{city}}</p>
+        <p>Favorite Language: {{language}}</p>
+        <p>Comments: {{comment}}</p>
+    </div>
+    <div class="redirect"><a href="/index.html">Home</a></div>
 </body>
 </html>
