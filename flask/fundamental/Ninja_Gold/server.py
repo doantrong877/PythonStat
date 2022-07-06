@@ -26,27 +26,37 @@ def process_money():
     if session['building'] == "farm":
         num = random.randint(10,20)
         session['gold'] += num
-        session['message'] += f"<p>Earned {num} golds from the farm! ({session['time']}) </p>"
+        color =  "'color:" + "green'"
+        session['message'] += f"<p style={color} >Earned {num} golds from the farm! ({session['time']}) </p>"
+        
 
     elif session['building'] == "cave":
         num = random.randint(5,10)
         session['gold'] += num
-        session['message'] += f"<p>Earned {num} golds from the cave! ({session['time']}) </p>"
+        color =  "'color:" + "green'"
+        session['message'] += f"<p style={color}>Earned {num} golds from the cave! ({session['time']}) </p>"
+        
     
     elif session['building'] == "house":
         num = random.randint(2,5)
         session['gold'] += num
-        session['message'] += f"<p>Earned {num} golds from the house! ({session['time']}) </p>"
+        color =  "'color:" + "green'"
+        session['message'] += f"<p style={color}>Earned {num} golds from the house! ({session['time']}) </p>"
+       
 
     elif session['building'] == "casino":
         choice = random.randint(0,1)
         num =  random.randint(0,50)
         if choice == 0:
             session['gold'] += num
-            session['message'] += f"<p>Enter a casino and earned {num} golds! ({session['time']}) </p>"
+            color =  "'color:" + "green'"
+            session['message'] += f"<p style={color}>Enter a casino and earned {num} golds! ({session['time']}) </p>"
+           
         else:
             session['gold'] -= num
-            session['message'] += f"<p>Enter a casino and lost {num} golds... Ouch.. ({session['time']}) </p>"
+            color =  "'color:" + "red'"
+            session['message'] += f"<p style={color}>Enter a casino and lost {num} golds... Ouch.. ({session['time']}) </p>"
+            
     return render_template("process.html", message=session['message'], gold =session['gold'])
 
 if __name__ == '__main__':

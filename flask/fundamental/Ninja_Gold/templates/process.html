@@ -40,6 +40,12 @@
         label{
             margin: 1% 0;
         }
+        #display{
+            border-style: solid;
+            border-width: 1px;
+            height: 200px;
+            overflow: auto;
+        }
     </style>
 </head>
 <body>
@@ -80,7 +86,7 @@
 
     <div class="act">
         <label for="acti">Activities:</label>
-        <div class="display">{{message|safe}}</div>
+        <div id="display">{{message|safe}}</div>
     </div>
     
 </body>
