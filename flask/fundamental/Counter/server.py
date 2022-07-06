@@ -30,5 +30,10 @@ def add_num():
     session["add"] = True
     return redirect('/')
 
+@app.route('/increment', methods = ['POST'])
+def increment_num():
+    session["count"] =session["count"] + int(request.form['inp']) - 1
+    return redirect('/')
+
 if __name__=="__main__":   
     app.run(debug=True)    
