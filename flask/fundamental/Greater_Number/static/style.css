@@ -1,0 +1,47 @@
+*{
+    margin: 1%;
+    padding: 0;
+}
+body{
+display:flex;
+flex-direction: column;
+align-items: center;
+}
+#guessBox{
+display:flex;
+flex-direction: column;
+align-items: center;
+justify-content: space-evenly;
+height: 100px;
+background-color: darkgray;
+color: yellow;
+padding-left: 2%;
+padding-right: 2%;
+border-radius: 5px;
+width: 200px;
+}
+#sub{
+    background-color: yellow;
+    padding: 2%;
+    border-radius: 5px;
+}
+.result{
+    color: yellow;
+    width: 400px;
+    height: 100px;
+    padding-left: 5% ;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+   
+}
+#play{
+    background-color: blue;
+    color: white;
+    padding: 2%;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

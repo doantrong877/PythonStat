@@ -5,35 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename = 'style.css')}}">
-    <style>
-        *{
-            margin: 1%;
-            padding: 0;
-        }
-        body{
-        display:flex;
-        flex-direction: column;
-        align-items: center;
-        }
-        #guessBox{
-        display:flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-evenly;
-        height: 100px;
-        }
-    </style>
+    
     <title>Great Number Game</title>'
 </head>
 <body>
     <h1>Welcome to the Great Number Game!!!</h1>
-    <p>i am thinking of a number between 1 and 100</p>
-    <div id="result"> {{message}} 
-        {% if correct = True %}
-
-        {% endif %}
+    <p>I am thinking of a number between 1 and 100</p>
+    <p>attemps taken: {{attemp}}</p>
+    {% if correct == True %}
+    <div class="result" style = "background-color: {{color}};"> <h3>{{message}}</h3>
+        <form action="/finish" method="post"><button id="play"type="submit">Play again</button></form> 
     </div>
-    <form action="/guess" method="post" id="guessBox">
+    
+    
+    {% endif %}
+    {% if correct == False %}
+    
+    <div class="result" style = "background-color: {{color}};"> <h3>{{message}}</h3></div> 
+         
+    {% endif %}
+    
+    <form action="/guess1" method="post" id="guessBox">
         <p>Take a guess!!!</p>
         <input type="text" name="input">
         <button type="submit">Guess</button>
