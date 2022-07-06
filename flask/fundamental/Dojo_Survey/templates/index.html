@@ -9,6 +9,36 @@
     <title>Dojo Survey</title>
 </head>
 <body>
-    
+    <form action="/results" method="post">
+
+        <label for="name">Name:</label>
+        <input type="text" name="username" id="name">
+
+        <label for="city">Dojo Location:</label>
+        <select class="form-select" aria-label="Default select example" id="location" name="city">
+            <option selected> -- Select a language -- </option>
+            <option value="1">Chicago</option>
+            <option value="2">Seattle</option>
+            <option value="3">Online</option>
+            <option value="4">Burbank</option>
+            <option value="5">Bellevue</option>
+          </select>
+
+          <label for="language">Favorite Language:</label>
+          <select class="form-select" aria-label="Default select example" id="language" >
+            <option selected> -- Select a language -- </option>
+            <option value="1">HTML</option>
+            <option value="2">CSS</option>
+            <option value="3">JavaScript</option>
+            <option value="4">Python</option>
+            <option value="5">C#</option>
+          </select>
+
+          <label for="comment">Favorite Language:</label>
+          <textarea name="cmt" id="comment" cols="30" rows="10"></textarea>
+
+          <button class="btn btn-warning" type="submit" >Submit</button>
+
+    </form>
 </body>
 </html>
