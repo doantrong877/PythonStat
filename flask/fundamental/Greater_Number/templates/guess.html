@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'style.css')}}">
+    <style>
+        *{
+            margin: 1%;
+            padding: 0;
+        }
+        body{
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        }
+        #guessBox{
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        height: 100px;
+        }
+    </style>
+    <title>Great Number Game</title>'
+</head>
+<body>
+    <h1>Welcome to the Great Number Game!!!</h1>
+    <p>i am thinking of a number between 1 and 100</p>
+    <div id="result"> {{message}} 
+        {% if correct = True %}
+
+        {% endif %}
+    </div>
+    <form action="/guess" method="post" id="guessBox">
+        <p>Take a guess!!!</p>
+        <input type="text" name="input">
+        <button type="submit">Guess</button>
+    </form>
+</body>
+</html>
