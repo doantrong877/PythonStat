@@ -6,15 +6,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        body{
+            
+            padding: 5% 40% ;
+        }
+        h1{
+            width: 100%;
+            color: rgb(244, 224, 11);
+            margin-bottom: 2%;
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: grey;
+            padding: 5%;
+           
+        }
+        label{
+            width: 100%;
+        }
+        select{
+            margin-bottom: 3%;
+        }
+        input{
+            margin-bottom: 3%;
+        }
+        .subbtn{
+            margin-top: 3%;
+            width: 100%;
+        }
+
+    </style>
     <title>Dojo Survey</title>
 </head>
 <body>
+    
     <form action="/results" method="post">
+        <h1>Dojo Survey</h1>
+        <label for="name" class="form-label">Name:</label>
+        <input class="form-control" type="text" name="username" id="name">
 
-        <label for="name">Name:</label>
-        <input type="text" name="username" id="name">
-
-        <label for="city">Dojo Location:</label>
+        <label for="city" class="form-label">Dojo Location:</label>
         <select class="form-select" aria-label="Default select example" id="location" name="city">
             <option selected> -- Select a language -- </option>
             <option value="1">Chicago</option>
@@ -24,7 +62,7 @@
             <option value="5">Bellevue</option>
           </select>
 
-          <label for="language">Favorite Language:</label>
+          <label for="language" class="form-label">Favorite Language:</label>
           <select class="form-select" aria-label="Default select example" id="language" >
             <option selected> -- Select a language -- </option>
             <option value="1">HTML</option>
@@ -34,10 +72,10 @@
             <option value="5">C#</option>
           </select>
 
-          <label for="comment">Favorite Language:</label>
-          <textarea name="cmt" id="comment" cols="30" rows="10"></textarea>
-
-          <button class="btn btn-warning" type="submit" >Submit</button>
+          <label for="comment" class="form-label">Comment:</label>
+          <textarea class="form-control" name="cmt" id="comment" cols="30" rows="10"></textarea>
+          <div class="subbtn"><button class="btn btn-warning" type="submit" >Submit</button></div>
+          
 
     </form>
 </body>
