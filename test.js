@@ -1,67 +1,65 @@
-const two_str1 = "object oriented programming";
-const two_expected1 = "OOP";
+/* 
+  Given a string containing space separated words
+  Reverse each word in the string.
+  If you need to, use .split to start, then try to do it without.
+*/
 
-// The 4 pillars of OOP
-const two_str2 = "abstraction polymorphism inheritance encapsulation";
-const two_expected2 = "APIE";
+const str1 = "hello";
+const expected1 = "olleh";
 
-const two_str3 = "software development life cycle";
-const two_expected3 = "SDLC";
+const str2 = "hello world";
+const expected2 = "olleh dlrow";
 
-// Bonus: ignore extra spaces
-const two_str4 = "  global   information tracker    ";
-const two_expected4 = "GIT";
-
-/**
- * Turns the given str into an acronym.
- * - Time: O(?).
- * - Space: O(?).
- * @param {string} str A string to be turned into an acronym.
- * @returns {string} The acronym.
- */
-function acronymize(str) {
-  
-
-    
-}
-
-const str1 = "creature";
-const expected1 = "erutaerc";
-
-const str2 = "dog";
-const expected2 = "god";
-
-const str3 = "hello";
-const expected3 = "olleh";
-
-const str4 = "";
-const expected4 = "";
+const str3 = "abc def ghi";
+const expected3 = "cba fed ihg";
 
 /**
- * Reverses the given str.
+ * Reverses the letters in each words in the given space separated
+ * string of words. Does NOT reverse the order of the words themselves.
  * - Time: O(?).
  * - Space: O(?).
- * @param {string} str String to be reversed.
- * @returns {string} The given str reversed.
- * 
- * pseudo code
- * - create a function that takes in a string
- * - create a newString variable
- * - loop through the given string
- *      - add each letter to a newString variable
- * - return newString
+ * @param {string} str Contains space separated words.
+ * @returns {string} The given string with each word's letters reversed.
  */
-function reverseString(str) {
+function reverseWords(str) {}
 
-    for(let i = 0, j = str.length - 1; i < j; i++, j--){
-        let temp = str[i]
-        str[i] = str[j]
-        console.log(str[i]);
-        str[j] = temp
-        console.log(str[j]);
+// *************************************************
+
+/* 
+  Reverse Word Order
+  Given a string of words (with spaces)
+  return a new string with words in reverse sequence.
+*/
+
+const two_str1 = "This is a test";
+const two_expected1 = "test a is This";
+
+const two_str2 = "hello";
+const two_expected2 = "hello";
+
+const two_str3 = "   This  is a   test  ";
+const two_expected3 = "test a is This";
+
+/**
+ * Reverses the order of the words but not the words themselves form the given
+ * string of space separated words.
+ * - Time: O(?).
+ * - Space: O(?).
+ * @param {string} wordsStr A string containing space separated words.
+ * @returns {string} The given string with the word order reversed but the words
+ *    themselves are not reversed.
+ */
+function reverseWordOrder(wordsStr) {
+    var reverse_arr = wordsStr.trim().split(" ").reverse()
+    var result = [];
+    for(let i = 0; i < reverse_arr.length; i++){
+       if (reverse_arr[i] == ''){
+            continue;
+       } else {
+        console.log(1);
+            result.push(reverse_arr[i])
+       }
     }
-    console.log(str);
-    return str
+    return result.join(" ");
 }
-
-console.log(reverseString(str3));
+console.log(reverseWordOrder(two_str3));
