@@ -1,6 +1,6 @@
 # import the function that will return an instance of a connection
 from flask_app.config.mysqlconnection import connectToMySQL
-from flask_app.models.ninja import ninja
+from flask_app.models import ninja
 # model the class after the Dojo table from our database
 class Dojo:
     def __init__( self , data ):
@@ -41,6 +41,18 @@ class Dojo:
 
     @classmethod
     def get_dojo_with_ninjas(cls, data):
-        query = "SELECT * FROM dojos LEFT JOIN burgers ON dojos.id = burgers.dojo_id WHERE dojos.id = %(id)s;"
-
-        
+        query = "SELECT * FROM dojos LEFT JOIN ninjas ON dojos.id = ninjas.dojo_id WHERE dojos.id = %(id)s;"
+        result = connectToMySQL('dojos_and_ninjas_schema').query_db( query, data )
+        dojos = cls(result[0])
+        # Iterate over the db results and create instances of dojos with cls.
+        for dojo in result:
+            ninja_data={
+                "id" : dojo["ninjas.id"],
+                "first_name" : dojo["first_name"],
+                "last_name" : dojo["last_name"],
+                "age" : dojo["age"],
+                "created_at" : "NOW()",
+                "updated_at" : "NOW()"
+            }
+            dojos.ninjas.append(ninja.Ninja(ninja_data))
+        return dojos

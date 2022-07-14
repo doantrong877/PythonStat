@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .main{
+            display: flex;
+            justify-content: space-around;
+        }
+        .all-dojo{
+            padding: 0 2%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+            width: 500px;
+            height: 300px;
+            background-color: aqua;
+        }
+        form{
+            padding: 0 2%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            width: 500px;
+            height: 300px;
+            background-color: aqua
+        }
+        h1{
+            text-align: center;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div class="main">
+        <form action="/add/dojo" method = "post">
+            <h1>New Dojo</h1>
+            <label for="namea">Name:</label>
+         <input type="text" id="namea" name="name">
+            <button type="submit">Add Dojo</button>
+        </form>
+
+        <div class="all-dojo">
+        <h1> All Dojos</h1> 
+         {% for dojo in dojos %}
+            <a href="/dojos/{{dojo.id}}">{{dojo.name}}</a>
+         {% endfor %}
+        </div>
+    </div>
+    <a href="/ninja">add ninja</a>
+</body>
+</html>
