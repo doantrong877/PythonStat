@@ -22,7 +22,7 @@ class Book:
     
     @classmethod
     def save(cls, data):
-        query = "INSERT INTO books (title, num_of_pages, created_at, updated_at) VALUES ( %(title)s, NOW(), NOW());"
+        query = "INSERT INTO books (title, num_of_pages, created_at, updated_at) VALUES ( %(title)s, %(num_of_pages)s, NOW(), NOW());"
         return connectToMySQL('books_schema').query_db(query, data)
 
     @classmethod

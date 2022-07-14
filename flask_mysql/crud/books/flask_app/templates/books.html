@@ -52,11 +52,14 @@
         button{
             width: 100px;
         }
+        a{
+            display: block;
+        }
     </style>
     <title>Books</title>
 </head>
 <body>
-    <form action="" method=""post>
+    <form action="/add/book" method="post">
         <h1>New Book</h1>
          <label class="form-label" for="namea">Name:</label>
          <input class="form-control" type="text" id="namea" name="name">
@@ -66,7 +69,10 @@
     </form>
     <div class="allBook">
         <h1>All Books</h1>
-        <a href="">somebook</a>
+        {% for book in books %}
+        <a href="">{{book.title}}</a>
+        {% endfor %}
+        
         <div class="home">
             <a href="/">Home</a>
         </div>
