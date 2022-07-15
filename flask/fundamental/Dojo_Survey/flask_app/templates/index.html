@@ -50,12 +50,22 @@
     
     <form action="/getInfo" method="post">
         <h1>Dojo Survey</h1>
+        <div>
+            {% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
+    {% if messages %}                            <!-- check if there are any messages -->
+        {% for message in messages %}            <!-- loop through the messages -->
+            <p>{{message}}</p>                   <!-- display each message in a paragraph tag -->
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+        </div>
+        
         <label for="name" class="form-label">Name:</label>
-        <input class="form-control" type="text" name="username" id="name">
+        <input class="form-control" type="text" name="name" id="name">
 
         <label for="city" class="form-label">Dojo Location:</label>
-        <select class="form-select" aria-label="Default select example" id="location" name="city">
-            <option selected> -- Select a language -- </option>
+        <select class="form-select" aria-label="Default select example" id="location" name="location">
+            <option value="0" selected> -- Select a language -- </option>
             <option value="Chicago">Chicago</option>
             <option value="Seattle">Seattle</option>
             <option value="Online">Online</option>
@@ -65,7 +75,7 @@
 
           <label for="lang" class="form-label">Favorite Language:</label>
           <select class="form-select" aria-label="Default select example" id="lang" name="language" >
-            <option selected> -- Select a language -- </option>
+            <option value="0" selected> -- Select a language -- </option>
             <option value="HTML">HTML</option>
             <option value="CSS">CSS</option>
             <option value="JavaScript">JavaScript</option>
