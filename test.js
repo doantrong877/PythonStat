@@ -1,65 +1,81 @@
 /* 
-  Given a string containing space separated words
-  Reverse each word in the string.
-  If you need to, use .split to start, then try to do it without.
+  Given a string that may have extra spaces at the start and the end,
+  return a new string that has the extra spaces at the start and the end trimmed (removed)
+  do not remove any other spaces.
 */
 
-const str1 = "hello";
-const expected1 = "olleh";
+const str1 = "   hello world     ";
+const expected1 = "hello world";
 
-const str2 = "hello world";
-const expected2 = "olleh dlrow";
-
-const str3 = "abc def ghi";
-const expected3 = "cba fed ihg";
+const str2 = "   hello     world     ";
+const expected2 = "hello     world";
 
 /**
- * Reverses the letters in each words in the given space separated
- * string of words. Does NOT reverse the order of the words themselves.
+ * Trims any leading or trailing white space from the given str.
  * - Time: O(?).
  * - Space: O(?).
- * @param {string} str Contains space separated words.
- * @returns {string} The given string with each word's letters reversed.
+ * @param {string} str
+ * @returns {string} The given string with any leading or trailing white space
+ *    stripped.
  */
-function reverseWords(str) {}
+function trim(str) {
+  newstr = "";
+  let i = 0;
+  let j = str.length - 1;
+  while (str.charAt(i) === " " || str.charAt(j) === " "){
+    if(str.charAt(i) === " "){i++}
+    if(str.charAt(j) === " "){j--}
+  }
+  console.log(i);
+  console.log(j);
+  for(let begin = i; begin <= j; begin++){
+    newstr += str.charAt(begin)
+  }
+  return newstr;
+}
 
-// *************************************************
+console.log(trim(str2)); 
+/*****************************************************************************/
 
 /* 
-  Reverse Word Order
-  Given a string of words (with spaces)
-  return a new string with words in reverse sequence.
+  An anagram is a word or phrase formed by rearranging the letters of a different word or phrase,
+  typically using all the original letters exactly once.
+  Is there a quick way to determine if they aren't an anagram before spending more time?
+  Given two strings
+  return whether or not they are anagrams
 */
 
-const two_str1 = "This is a test";
-const two_expected1 = "test a is This";
+const two_strA1 = "yes";
+const two_strB1 = "eys";
+const two_expected1 = true;
 
-const two_str2 = "hello";
-const two_expected2 = "hello";
+const two_strA2 = "yes";
+const two_strB2 = "eYs";
+const two_expected2 = true;
 
-const two_str3 = "   This  is a   test  ";
-const two_expected3 = "test a is This";
+const two_strA3 = "no";
+const two_strB3 = "noo";
+const two_expected3 = false;
+
+const two_strA4 = "silent";
+const two_strB4 = "listen";
+const two_expected4 = true;
 
 /**
- * Reverses the order of the words but not the words themselves form the given
- * string of space separated words.
+ * Determines whether s1 and s2 are anagrams of each other.
+ * Anagrams have all the same letters but in different orders.
  * - Time: O(?).
  * - Space: O(?).
- * @param {string} wordsStr A string containing space separated words.
- * @returns {string} The given string with the word order reversed but the words
- *    themselves are not reversed.
+ * @param {string} s1
+ * @param {string} s2
+ * @returns {boolean} Whether s1 and s2 are anagrams.
  */
-function reverseWordOrder(wordsStr) {
-    var reverse_arr = wordsStr.trim().split(" ").reverse()
-    var result = [];
-    for(let i = 0; i < reverse_arr.length; i++){
-       if (reverse_arr[i] == ''){
-            continue;
-       } else {
-        console.log(1);
-            result.push(reverse_arr[i])
-       }
-    }
-    return result.join(" ");
+function isAnagram(s1, s2) {
+  if(s1.length != s2.length){
+    return false;
+  }
+  s1=s1.toLowerCase();
+  s2=s2.toLowerCase();
+
+
 }
-console.log(reverseWordOrder(two_str3));
