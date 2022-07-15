@@ -28,23 +28,23 @@ class Book:
     @classmethod
     def get_one(cls, data):
         query = "SELECT * FROM books WHERE id = %(id)s;"
-        result = connectToMySQL('book_schema').query_db(query,data)
+        result = connectToMySQL('books_schema').query_db(query,data)
         return cls(result[0])
 
     @classmethod
     def get_book_with_authors(cls, data):
-        query = "SELECT * FROM books LEFT JOIN favorites ON books.id = favorites.book_id LEFT JOIN users ON favorites.user_id = users.id WEHRE books.id = %(id)s; "
-        result = connectToMySQL("books.schema").query_db(query,data)
+        query = "SELECT * FROM books LEFT JOIN favorites ON books.id = favorites.book_id LEFT JOIN users ON favorites.user_id = users.id WHERE books.id = %(id)s; "
+        result = connectToMySQL("books_schema").query_db(query,data)
         books = cls(result[0])
         for book in result:
             author_data = {
                 "id" : book['users.id'],
-                "name": book['name'],
+                "first_name": book['first_name'],
                 "created_at" : "NOW()",
                 "updated_at" : "NOW()"
             }
-        books.authors.append(author.Author(author_data))
-        return bookss
+            books.authors.append(author.Author(author_data))
+        return books
 
             
 

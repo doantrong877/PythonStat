@@ -70,7 +70,7 @@
     <div class="allBook">
         <h1>All Books</h1>
         {% for book in books %}
-        <a href="">{{book.title}}</a>
+        <a href="/book/{{book.id}}">{{book.title}}</a>
         {% endfor %}
         
         <div class="home">

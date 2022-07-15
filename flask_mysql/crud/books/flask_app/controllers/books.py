@@ -2,7 +2,7 @@ from crypt import methods
 from flask_app import app
 from flask_app.models.book import Book
 from flask_app.models.author import Author
-from flask import render_template, redirect, request,session
+from flask import render_template, redirect, request
 
 @app.route('/')
 def home():
@@ -32,7 +32,9 @@ def favo_author(id):
 def add_favoauthor():
     data = {
         "first_name" : request.form['name']
+        
     }
-    session['first_name'] = data
+    
+    book = request.form['book_id']
     Author.save(data)
-    return rend
+    return redirect(f"/book/{book}")

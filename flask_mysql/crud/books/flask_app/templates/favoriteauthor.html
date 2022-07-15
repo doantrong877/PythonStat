@@ -52,19 +52,26 @@
 </head>
 <body>
     <div class="allBook">
-        <h1>Title: The Art of Eating Hotdogs</h1>
+        <h1>Title: {{book.title}}</h1>
+        
         <p>Favorite by:</p>
-        <p>some </p>
+        {% for favorite in favo.authors %}
+            <p>{{favorite.first_name}}</p>
+        {% endfor %}
         
         <div class="home">
             <a href="/">Home</a>
         </div>
     </div>
-    <form action="" method=""post>
+    <form action="/add/favoauthor" method="post">
         <h1>Add Book's Favorite</h1>
+            <input type="hidden" value="{{book.id}}" name="book_id">
          <label class="form-label" for="namea">Book:</label>
          <select name="name" id="namea">
-            <option value="1">somebody's name</option>
+            {% for author in authors %}
+            <option value={{author.first_name}}>{{author.first_name}}</option>
+            {% endfor %}
+            
          </select>
         <button class="btn btn-primary" type="submit">Add Book</button>
     </form>
