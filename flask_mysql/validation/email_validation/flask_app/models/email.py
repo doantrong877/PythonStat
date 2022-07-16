@@ -18,14 +18,26 @@ class Email:
         for email in results:
             emails.append(cls(email))
         return emails
-    
-    @staticmethod
-    def validate_user(email):
+
+    @classmethod
+    def save(cls, data):
+        query = "INSERT INTO emails (email, created_at, updated_at) VALUES (%(email)s, NOW(), NOW());"
+        return connectToMySQL.query_db(query,data)
+
+    @classmethod
+    def validate_user(cls, data):
         is_valid = True
         # test whether a field matches the pattern
-        if not EMAIL_REGEX.match(email['email']): 
+        if not EMAIL_REGEX.match(data['email']): 
             flash("Invalid email address!", 'email')
             is_valid = False
+        query = "SELECT * FROM emails"
+        results = connectToMySQL('emails_schema').query_db(query)
+        for email_info in results:
+            if cls(email_info).email == data['email']:
+                flash("email is already taken")
+                is_valid = False
+
         return is_valid
 
     
