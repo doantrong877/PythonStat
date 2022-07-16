@@ -22,7 +22,7 @@ class Email:
     @classmethod
     def save(cls, data):
         query = "INSERT INTO emails (email, created_at, updated_at) VALUES (%(email)s, NOW(), NOW());"
-        return connectToMySQL.query_db(query,data)
+        return connectToMySQL('emails_schema').query_db(query,data)
 
     @classmethod
     def validate_user(cls, data):
