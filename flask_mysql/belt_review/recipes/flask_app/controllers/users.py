@@ -1,3 +1,4 @@
+import string
 from flask import render_template, redirect, request, session, flash
 from flask_app import app
 from flask_app.models.user import User
@@ -34,13 +35,29 @@ def register():
         "email" : request.form['email'],
         "password" : pw_hash
     }
-   
     #assign session id
     session['user_id'] = User.save(data)
-    
-
     return redirect('/recipes')
 
+#login route
+@app.route('/login', methods=['POST'])
+def login():
+    
+    #check if there is email in db
+    data_email = {
+        'email' : request.form['email']
+    }
+    user = User.get_by_email(data_email)
+    if not user :
+        flash('Invalid Email/Password', 'login')
+        return redirect('/')
+    
+    #check if password match db pass
+    if not bcrypt.check_password_hash(user.password,request.form['password']):
+        flash('Invalid Email/Password','login')
+        return redirect('/')
+    session['user_id'] = user.id
+    return redirect('/recipes')
 #Welcome page
 
 @app.route('/recipes')
@@ -56,3 +73,8 @@ def welcome_page():
 def logout():
     session.clear()
     return redirect('/')
+
+#add recipe
+@app.route('/recipes/new')
+def add_recipe():
+    return render_template('new_recipe.html')

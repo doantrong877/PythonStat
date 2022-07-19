@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipes Share</title>
+</head>
+<body>
+    <h1>Add a New Recipe!</h1>
+    
+    <a href="/recipes">back to recipes</a>
+    <a href="/logout">logout</a>
+    {% with messages = get_flashed_messages(category_filter=["newrecipe"]) %}     <!-- declare a variable called messages -->
+    {% if messages %}                            <!-- check if there are any messages -->
+        {% for message in messages %}            <!-- loop through the messages -->
+            <p>{{message}}</p>                   <!-- display each message in a paragraph tag -->
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+<form action="/addrecipe" method="post">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name">
+    <label for="des">Description:</label>
+    <textarea id="des" name="description" cols="20" rows="5"></textarea>
+    <label for="ins">Instruction:</label>
+    <textarea id="ins" name="instruction" cols="20" rows="5"></textarea>
+
+    <label for="data">Date Cooked/Made:</label>
+    <input type="date" id="date" name="created_at">
+
+    <div>
+        
+        <input name="contact" type="radio" value="yes">
+        <label for="cooktime1">Yes</label>
+
+        <input type="radio" name="contact" value="no">
+        <label for="cooktime2">No</label>
+    </div>
+    <button type="submit">Submit</button>
+</form>
+
+</body>
+</html>

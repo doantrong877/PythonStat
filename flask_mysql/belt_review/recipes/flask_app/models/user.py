@@ -14,7 +14,7 @@ class User:
         self.first_name = data['first_name']
         self.last_name = data['last_name']
         self.email = data['email']
-        self.password = ['password']
+        self.password = data['password']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
         self.recipes = []
@@ -24,7 +24,7 @@ class User:
         results = connectToMySQL('recipes_schema').query_db(query)
         users = []
         for user in results:
-            users.append(cls[user])
+            users.append(cls(user))
         return users
     
     @classmethod
@@ -42,7 +42,7 @@ class User:
     def get_by_email(cls,data):
         query = "SELECT * FROM users WHERE users.email = %(email)s;"
         result = connectToMySQL('recipes_schema').query_db(query,data)
-        if len(result[0]) < 1:
+        if len(result) < 1:
             return False
         return cls(result[0])
 
