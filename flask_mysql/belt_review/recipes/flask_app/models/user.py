@@ -23,7 +23,7 @@ class User:
         query = "SELECT * FROM users"
         results = connectToMySQL('recipes_schema').query_db(query)
         users = []
-        for user in users:
+        for user in results:
             users.append(cls[user])
         return users
     

@@ -13,7 +13,7 @@ def home():
 #register route
 @app.route('/register', methods=['POST'])
 def register():
-    
+
     #check for invalid input
     if not User.validate_registration(request.form):
         return redirect('/')
@@ -34,11 +34,10 @@ def register():
         "email" : request.form['email'],
         "password" : pw_hash
     }
-
-    #save data and assign user to variable
-    User.save(data)
-    user = User.get_by_email(request.form['email'])
-    session['user_id'] = user.id
+   
+    #assign session id
+    session['user_id'] = User.save(data)
+    
 
     return redirect('/recipes')
 
@@ -46,6 +45,14 @@ def register():
 
 @app.route('/recipes')
 def welcome_page():
-    return render_template('welcome_page.html')
+    data ={
+        'id' : session['user_id']
+    }
+    return render_template('welcome_page.html', name = User.get_one(data).first_name)
 
 
+#logout
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect('/')
