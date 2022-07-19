@@ -1,3 +1,4 @@
+from unittest import result
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask import flash
 from flask_app import app
@@ -28,13 +29,21 @@ class User:
     
     @classmethod
     def save(cls, data):
-        query = "INSERT INTO users (first_name, last_name, email, password, created_at, updated_at) VALUES (%(first_name)s,%(last_name)s,%(email)s,%(password)s,%(created_at)s,%(updated_at)s);"
+        query = "INSERT INTO users (first_name, last_name, email, password, created_at, updated_at) VALUES (%(first_name)s,%(last_name)s,%(email)s,%(password)s,NOW(),NOW());"
         return connectToMySQL('recipes_schema').query_db(query,data)
 
     @classmethod
     def get_one(cls,data):
         query = "SELECT * FROM users WHERE users.id = %(id)s;"
         result = connectToMySQL('recipes_schema').query_db(query,data)
+        return cls(result[0])
+
+    @classmethod
+    def get_by_email(cls,data):
+        query = "SELECT * FROM users WHERE users.email = %(email)s;"
+        result = connectToMySQL('recipes_schema').query_db(query,data)
+        if len(result[0]) < 1:
+            return False
         return cls(result[0])
 
     @classmethod
@@ -45,6 +54,29 @@ class User:
 
         for recipe in result:
             recipe_data = {
-                
+
             }
+
+    @classmethod
+    def validate_registration(cls, data):
+        is_valid = True
+
+        if len(data['first_name']) < 2:
+            flash("First name has two have at least 2 character",'register')
+            is_valid = False
+        if len(data['last_name']) < 2:
+            flash("Last name has two have at least 2 character",'register')
+            is_valid = False
+        if not EMAIL_REGEX.match(data['email']):
+            flash("Invalid email addess!",'register')
+            is_valid = False
+        query = "SELECT * FROM users;"
+        results = connectToMySQL('recipes_schema').query_db(query)
+        for email_info in results:
+            if cls(email_info).email == data['email']:
+                flash("email has already registed",'register')
+                is_valid = False
+        return is_valid
+    
+    
     
