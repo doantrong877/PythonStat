@@ -16,4 +16,35 @@ class User:
         self.password = ['password']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
+        self.recipes = []
+    @classmethod
+    def get_all(cls):
+        query = "SELECT * FROM users"
+        results = connectToMySQL('recipes_schema').query_db(query)
+        users = []
+        for user in users:
+            users.append(cls[user])
+        return users
+    
+    @classmethod
+    def save(cls, data):
+        query = "INSERT INTO users (first_name, last_name, email, password, created_at, updated_at) VALUES (%(first_name)s,%(last_name)s,%(email)s,%(password)s,%(created_at)s,%(updated_at)s);"
+        return connectToMySQL('recipes_schema').query_db(query,data)
 
+    @classmethod
+    def get_one(cls,data):
+        query = "SELECT * FROM users WHERE users.id = %(id)s;"
+        result = connectToMySQL('recipes_schema').query_db(query,data)
+        return cls(result[0])
+
+    @classmethod
+    def get_user_with_recipes(cls, data):
+        query = "SELECT * FROM users LEFT JOIN recipes ON users.id = recipes.user_id WHERE users.id = %(id)s;"
+        result = connectToMySQL('recipes_schema').query_db(query, data)
+        users = cls(result[0])
+
+        for recipe in result:
+            recipe_data = {
+                
+            }
+    
