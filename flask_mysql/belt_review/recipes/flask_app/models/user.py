@@ -17,7 +17,6 @@ class User:
         self.password = data['password']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
-        self.recipes = []
     @classmethod
     def get_all(cls):
         query = "SELECT * FROM users"
@@ -47,15 +46,14 @@ class User:
         return cls(result[0])
 
     @classmethod
-    def get_user_with_recipes(cls, data):
-        query = "SELECT * FROM users LEFT JOIN recipes ON users.id = recipes.user_id WHERE users.id = %(id)s;"
-        result = connectToMySQL('recipes_schema').query_db(query, data)
-        users = cls(result[0])
+    def get_user_with_recipes(cls):
+        query = "SELECT users.first_name as posted_by, recipes.name as name, recipes.under as under FROM users LEFT JOIN recipes ON users.id = recipes.user_id;"
+        result = connectToMySQL('recipes_schema').query_db(query)
+        users = []
 
-        for recipe in result:
-            recipe_data = {
-
-            }
+        for user in result:
+            users.append(user)
+        return users
 
     @classmethod
     def validate_registration(cls, data):

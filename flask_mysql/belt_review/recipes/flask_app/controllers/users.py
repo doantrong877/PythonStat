@@ -1,4 +1,4 @@
-import string
+
 from flask import render_template, redirect, request, session, flash
 from flask_app import app
 from flask_app.models.user import User
@@ -65,7 +65,9 @@ def welcome_page():
     data ={
         'id' : session['user_id']
     }
-    return render_template('welcome_page.html', name = User.get_one(data).first_name)
+    users = User.get_user_with_recipes()
+
+    return render_template('welcome_page.html', name = User.get_one(data).first_name, users = users)
 
 
 #logout
@@ -74,7 +76,3 @@ def logout():
     session.clear()
     return redirect('/')
 
-#add recipe
-@app.route('/recipes/new')
-def add_recipe():
-    return render_template('new_recipe.html')

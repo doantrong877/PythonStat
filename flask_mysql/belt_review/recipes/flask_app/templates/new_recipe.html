@@ -11,7 +11,7 @@
     
     <a href="/recipes">back to recipes</a>
     <a href="/logout">logout</a>
-    {% with messages = get_flashed_messages(category_filter=["newrecipe"]) %}     <!-- declare a variable called messages -->
+    {% with messages = get_flashed_messages(category_filter=["new_recipe"]) %}     <!-- declare a variable called messages -->
     {% if messages %}                            <!-- check if there are any messages -->
         {% for message in messages %}            <!-- loop through the messages -->
             <p>{{message}}</p>                   <!-- display each message in a paragraph tag -->
@@ -32,10 +32,10 @@
 
     <div>
         
-        <input name="contact" type="radio" value="yes">
+        <input name="box" type="radio" value="yes" id="cooktime1">
         <label for="cooktime1">Yes</label>
 
-        <input type="radio" name="contact" value="no">
+        <input type="radio" name="box" value="no" id="cooktime2">
         <label for="cooktime2">No</label>
     </div>
     <button type="submit">Submit</button>
