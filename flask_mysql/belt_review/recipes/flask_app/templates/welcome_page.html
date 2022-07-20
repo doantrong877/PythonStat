@@ -31,6 +31,7 @@
         </tr>
 
         {% for user in users %}
+        {% if user.name != None %}
         <tr><td>{{user.name}}</td>
             <td>{{user.under}}</td>
             <td>{{user.posted_by}}</td>
@@ -40,7 +41,7 @@
             {% if user.user_id != session['user_id']%}
             <td><a href="/recipes/{{user.recipe_id}}">view recipe</a></td>
             {% endif %}
-
+        {% endif %}  
         </tr>
         
         

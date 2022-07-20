@@ -4,48 +4,63 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='edit.css')}}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <title>Recipes Share</title>
 </head>
 <body>
-    <h1>Edit Recipe!</h1>
+    <div class="top-bar"><h1>Edit Recipe!</h1>
     
-    <a href="/recipes">back to recipes</a>
-    <a href="/logout">logout</a>
+        <a href="/recipes">back to recipes</a>
+        <a href="/logout">logout</a> </div>
+    
     {% with messages = get_flashed_messages(category_filter=["new_recipe"]) %}     <!-- declare a variable called messages -->
     {% if messages %}                            <!-- check if there are any messages -->
         {% for message in messages %}            <!-- loop through the messages -->
-            <p>{{message}}</p>                   <!-- display each message in a paragraph tag -->
+            <p style="color:red">{{message}}</p>                   <!-- display each message in a paragraph tag -->
         {% endfor %}
     {% endif %}
 {% endwith %}
 
 <form action="/edit/recipe" method="post">
+    <div class="form">
+        <div class="text">
     <label for="name">Name:</label>
     <input type="text" id="name" name="name" value="{{name}}">
     <label for="des">Description:</label>
     <textarea id="des" name="description" cols="20" rows="5">{{description}}</textarea>
     <label for="ins">Instruction:</label>
     <textarea id="ins" name="instruction" cols="20" rows="5">{{instruction}}</textarea>
+            </div>
 
+    <div class="date">
     <label for="data">Date Cooked/Made:</label>
     <input type="date" id="date" name="created_at">
 
     <div>
         {% if under == "yes" %}
-        <input name="box" type="radio" value="yes" id="cooktime1" checked>
-        <label for="cooktime1">Yes</label>
-
-        <input type="radio" name="box" value="no" id="cooktime2">
-        <label for="cooktime2">No</label>
+        <div id="checkbox">
+        <div><input name="box" type="radio" value="yes" id="cooktime1" checked>
+            <label for="cooktime1">Yes</label></div>
+        <div><input type="radio" name="box" value="no" id="cooktime2">
+            <label for="cooktime2">No</label></div>
+        
+    </div>
         {% endif %}
         {% if under == "no" %}
-        <input name="box" type="radio" value="yes" id="cooktime1">
-        <label for="cooktime1">Yes</label>
-
-        <input type="radio" name="box" value="no" id="cooktime2"  checked>
-        <label for="cooktime2">No</label>
+        <div id="checkbox">
+            <div><input name="box" type="radio" value="yes" id="cooktime1">
+                <label for="cooktime1">Yes</label></div>
+        
+                <div><input type="radio" name="box" value="no" id="cooktime2"  checked>
+                    <label for="cooktime2">No</label></div>
+        
+         </div>
         {% endif %}
     </div>
+    </div>
+</div>
     <button type="submit">Submit</button>
 </form>
 

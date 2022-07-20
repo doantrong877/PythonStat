@@ -1,0 +1,27 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    padding: 2% 5%;
+}
+.top-bar{
+    display: flex;
+    justify-content:  space-between;
+    margin-bottom: 2%;
+}
+.top-bar a{
+    padding-right: 50px;
+}
+.text{
+    display: flex;
+}
+label{
+    display: flex;
+    flex: 1;
+}
+.text p{
+    display: flex;
+    flex: 3;
+}
