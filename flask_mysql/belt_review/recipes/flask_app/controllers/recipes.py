@@ -13,7 +13,6 @@ def add_recipe():
 @app.route('/addrecipe', methods = ['POST'])
 def save_recipe():
     if not Recipe.validate_recipe(request.form):
-        print(request.form)
         if  'box' not in request.form :
             flash("please check cook time",'new_recipe')
         return redirect('/recipes/new')
@@ -25,7 +24,7 @@ def save_recipe():
         'created_at' : request.form['created_at'],
         'under' : request.form['box']
     }
-    session['recipe_id'] = Recipe.save(data)
+    Recipe.save(data)
     return redirect('/recipes')
 
 #get recipe info
@@ -61,5 +60,24 @@ def edit_recipe(id):
         'id' : id
     }
     recipe = Recipe.get_recipe_by_id(recipe_data)
-    
+    session['recipe_id'] = id
     return render_template('edit_recipe.html', name = recipe.name, description = recipe.description, instruction = recipe.instruction, under = recipe.under)
+
+#get data from edit
+@app.route('/edit/recipe', methods=['POST'])
+def edit():
+    if not Recipe.validate_recipe(request.form):
+        if  'box' not in request.form :
+            flash("please check cook time",'new_recipe')
+        return redirect('/recipes/new')
+    data = {
+        'user_id' : session['user_id'],
+        'name' : request.form['name'],
+        'description': request.form['description'],
+        'instruction': request.form['instruction'],
+        'created_at' : request.form['created_at'],
+        'under' : request.form['box'],
+        'recipe_id' : session['recipe_id']
+    }
+    Recipe.update(data)
+    return redirect('/recipes')

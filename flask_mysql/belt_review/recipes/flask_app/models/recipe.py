@@ -52,3 +52,8 @@ class Recipe:
     def destroy(cls,data):
         query = "DELETE FROM recipes WHERE recipes.id = %(id)s;"
         return connectToMySQL('recipes_schema').query_db(query,data)
+
+    @classmethod
+    def update(cls,data):
+        query = "UPDATE recipes SET user_id = %(user_id)s, name = %(name)s, description = %(description)s, instruction = %(instruction)s, created_at = %(created_at)s, under = %(under)s WHERE id = %(recipe_id)s;"
+        return connectToMySQL('recipes_schema').query_db(query,data)
