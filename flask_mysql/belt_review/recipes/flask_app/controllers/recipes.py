@@ -1,3 +1,4 @@
+from pydoc import describe
 from flask_app import app
 from flask_app.models.recipe import Recipe
 from flask_app.models.user import User
@@ -44,5 +45,12 @@ def get_recipe_info(id):
     return render_template('recipe_info.html', user_name = User.get_one(user_data).first_name, name = recipe.name,
                     description = recipe.description, under = recipe.under, instruction = recipe.instruction, date_made= recipe.created_at, poster =  User.get_one(poster).first_name )
 
-    
+#delete recipe
+@app.route('/delete/<int:id>')
+def delete_recipe(id):
+    data = {
+        'id' : id
+    }
+    Recipe.destroy(data)
+    return redirect('/recipes')
 

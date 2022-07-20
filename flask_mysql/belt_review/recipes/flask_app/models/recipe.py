@@ -47,3 +47,8 @@ class Recipe:
             flash("Date cannot be empty", "new_recipe")
             is_valid = False
         return is_valid
+
+    @classmethod
+    def destroy(cls,data):
+        query = "DELETE FROM recipes WHERE recipes.id = %(id)s;"
+        return connectToMySQL('recipes_schema').query_db(query,data)
