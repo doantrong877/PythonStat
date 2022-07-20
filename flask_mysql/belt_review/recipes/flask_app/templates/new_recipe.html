@@ -10,37 +10,42 @@
     <title>Recipes Share</title>
 </head>
 <body>
-    <h1>Add a New Recipe!</h1>
+    <div class="top-bar"><h1>Add a New Recipe!</h1>
     
-    <a href="/recipes">back to recipes</a>
-    <a href="/logout">logout</a>
+        <a href="/recipes">back to recipes</a>
+        <a href="/logout">logout</a> </div>
+    
     {% with messages = get_flashed_messages(category_filter=["new_recipe"]) %}     <!-- declare a variable called messages -->
     {% if messages %}                            <!-- check if there are any messages -->
         {% for message in messages %}            <!-- loop through the messages -->
-            <p>{{message}}</p>                   <!-- display each message in a paragraph tag -->
+            <p style="color:red">{{message}}</p>                   <!-- display each message in a paragraph tag -->
         {% endfor %}
     {% endif %}
 {% endwith %}
 
 <form action="/addrecipe" method="post">
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name">
-    <label for="des">Description:</label>
-    <textarea id="des" name="description" cols="20" rows="5"></textarea>
-    <label for="ins">Instruction:</label>
-    <textarea id="ins" name="instruction" cols="20" rows="5"></textarea>
-
+    <div class="form">
+        <div class="text">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
+        <label for="des">Description:</label>
+        <textarea id="des" name="description" cols="20" rows="5"></textarea>
+        <label for="ins">Instruction:</label>
+        <textarea id="ins" name="instruction" cols="20" rows="5"></textarea>
+    </div>
+    
+    <div class="date">
     <label for="data">Date Cooked/Made:</label>
     <input type="date" id="date" name="created_at">
-
-    <div>
-        
-        <input name="box" type="radio" value="yes" id="cooktime1">
-        <label for="cooktime1">Yes</label>
-
-        <input type="radio" name="box" value="no" id="cooktime2">
-        <label for="cooktime2">No</label>
+    <p>Under 30 minutes?</p>
+    <div id="checkbox">
+        <div><input name="box" type="radio" value="yes" id="cooktime1"><label for="cooktime1">Yes</label></div>
+        <div><input type="radio" name="box" value="no" id="cooktime2"><label for="cooktime2">No</label></div>
     </div>
+    </div>
+    
+</div>
+    
     <button type="submit">Submit</button>
 </form>
 

@@ -1,0 +1,41 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    padding: 2% 5%;
+}
+.top-bar{
+    display: flex;
+    justify-content:  space-between;
+    margin-bottom: 2%;
+}
+.top-bar a{
+    padding-right: 50px;
+}
+.text{
+    display: flex;
+    flex-direction: column;
+    flex: 3;
+    margin-right: 20%;
+}
+.form{
+    display: flex;
+    justify-content: space-between;
+}
+.date{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding-right: 10%;
+}
+#date{
+    margin-bottom: 2%;
+}
+#checkbox{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
