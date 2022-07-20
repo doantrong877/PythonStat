@@ -54,3 +54,12 @@ def delete_recipe(id):
     Recipe.destroy(data)
     return redirect('/recipes')
 
+#edit recipe
+@app.route('/recipes/edit/<int:id>')
+def edit_recipe(id):
+    recipe_data = {
+        'id' : id
+    }
+    recipe = Recipe.get_recipe_by_id(recipe_data)
+    
+    return render_template('edit_recipe.html', name = recipe.name, description = recipe.description, instruction = recipe.instruction, under = recipe.under)
