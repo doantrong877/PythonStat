@@ -67,9 +67,10 @@ def edit_recipe(id):
 @app.route('/edit/recipe', methods=['POST'])
 def edit():
     if not Recipe.validate_recipe(request.form):
+        id = session['recipe_id']
         if  'box' not in request.form :
             flash("please check cook time",'new_recipe')
-        return redirect('/recipes/new')
+        return redirect(f'/recipes/edit/{id}')
     data = {
         'user_id' : session['user_id'],
         'name' : request.form['name'],
