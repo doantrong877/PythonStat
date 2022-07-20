@@ -28,8 +28,16 @@
         <tr><td>{{user.name}}</td>
             <td>{{user.under}}</td>
             <td>{{user.posted_by}}</td>
-            <td><a href="">view recipe</a> | <a href="">edit</a> | <a href="">delete</a></td>
+            {% if user.user_id == session['user_id']%}
+            <td><a href="/recipes/{{user.recipe_id}}">view recipe</a> | <a href="">edit</a> | <a href="">delete</a></td>
+            {% endif %}
+            {% if user.user_id != session['user_id']%}
+            <td><a href="/recipes/{{user.recipe_id}}">view recipe</a></td>
+            {% endif %}
+
         </tr>
+        
+        
             
 
         {% endfor %}

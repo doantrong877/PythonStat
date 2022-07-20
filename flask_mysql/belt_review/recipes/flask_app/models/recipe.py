@@ -21,6 +21,12 @@ class Recipe:
         return recipes
     
     @classmethod
+    def get_recipe_by_id(cls,data):
+        query = "SELECT * FROM recipes WHERE recipes.id = %(id)s;"
+        result = connectToMySQL('recipes_schema').query_db(query,data)
+        return cls(result[0])
+
+    @classmethod
     def save(cls,data):
         query = "INSERT INTO recipes(user_id,name,description,instruction,created_at,updated_at,under) VALUES (%(user_id)s,%(name)s,%(description)s,%(instruction)s,%(created_at)s,NOW(),%(under)s);"
         return connectToMySQL('recipes_schema').query_db(query,data)

@@ -1,5 +1,6 @@
 from flask_app import app
 from flask_app.models.recipe import Recipe
+from flask_app.models.user import User
 from flask import flash, render_template, session, redirect, request
 
 #add recipe
@@ -25,3 +26,23 @@ def save_recipe():
     }
     session['recipe_id'] = Recipe.save(data)
     return redirect('/recipes')
+
+#get recipe info
+@app.route('/recipes/<int:id>')
+def get_recipe_info(id):
+    user_data ={
+        'id' : session['user_id']
+    }
+    recipe_data = {
+        'id' : id
+    }
+    
+    recipe = Recipe.get_recipe_by_id(recipe_data)
+    poster = {
+        'id': recipe.user_id
+    }
+    return render_template('recipe_info.html', user_name = User.get_one(user_data).first_name, name = recipe.name,
+                    description = recipe.description, under = recipe.under, instruction = recipe.instruction, date_made= recipe.created_at, poster =  User.get_one(poster).first_name )
+
+    
+

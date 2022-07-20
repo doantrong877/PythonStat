@@ -47,7 +47,7 @@ class User:
 
     @classmethod
     def get_user_with_recipes(cls):
-        query = "SELECT users.first_name as posted_by, recipes.name as name, recipes.under as under FROM users LEFT JOIN recipes ON users.id = recipes.user_id;"
+        query = "SELECT *, users.first_name as posted_by, recipes.id as recipe_id, recipes.name as name, recipes.created_at as date_made ,recipes.under as under FROM users LEFT JOIN recipes ON users.id = recipes.user_id;"
         result = connectToMySQL('recipes_schema').query_db(query)
         users = []
 

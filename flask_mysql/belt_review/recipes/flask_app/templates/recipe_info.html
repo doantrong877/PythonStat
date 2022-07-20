@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Welcome, {{user_name}}</h1>
+    <a href="/recipes">back to recipe</a>
+    <a href="/logout">logout</a>
+
+    <h2>{{name}}</h2>
+
+    <p>Posted by: {{poster}}</p>
+
+    <label for="description">Desciption:</label>
+    <p id="description">{{description}}</p>
+
+    <label for="under">Under 30 minutes? </label>
+    <p id="under">{{under}}</p>
+
+    <label for="instruction">Instructions: </label>
+    <p id="instruction">{{instruction}}</p>
+
+    <label for="date">Date Made: </label>
+    <p id="date">{{date_made}}</p>
+</body>
+</html>
